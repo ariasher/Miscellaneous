@@ -1,13 +1,15 @@
 @echo off
 set /p project_name="Enter project name: "
-set /p destination="Enter desination location: "
-mkdir %destination%\%project_name%\assets\scripts
-mkdir %destination%\%project_name%\assets\bootstrap
-mkdir %destination%\%project_name%\assets\styles
-mkdir %destination%\%project_name%\assets\images
-type NUL > %destination%\%project_name%\index.html
-type NUL > %destination%\%project_name%\assets\scripts\script.js
-type NUL > %destination%\%project_name%\assets\styles\style.css
-xcopy "C:\Web Project Resource\JQuery" %destination%\%project_name%\assets\scripts /E
-xcopy "C:\Web Project Resource\Bootstrap" %destination%\%project_name%\assets\bootstrap /E
+set /p drive_letter="Enter drive letter: "
+set /p destination="Enter desination location (with proper nesting): "
+set project_path=%drive_letter%:\%destination%\%project_name%
+mkdir %project_path%\assets\scripts
+mkdir %project_path%\assets\bootstrap
+mkdir %project_path%\assets\styles
+mkdir %project_path%\assets\images
+type NUL > %project_path%\index.html
+type NUL > %project_path%\assets\scripts\script.js
+type NUL > %project_path%\assets\styles\style.css
+xcopy "C:\Web Project Resource\JQuery" %project_path%\assets\scripts /E
+xcopy "C:\Web Project Resource\Bootstrap" %project_path%\assets\bootstrap /E
 echo Project Created
